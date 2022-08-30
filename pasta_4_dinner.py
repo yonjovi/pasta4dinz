@@ -3,10 +3,38 @@ import streamlit as st
 from streamlit_tags import st_tags, st_tags_sidebar
 import pandas as pd
 
-st.markdown("""
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    """, unsafe_allow_html=True)
+# st.markdown("""
+#         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+#         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+#     """, unsafe_allow_html=T rue)
+
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+background-image: url("https://openailabsprodscus.blob.core.windows.net/private/user-gn1vaT0ZAxCQpzP5sUcTnPcg/generations/generation-nwyne1bpVMT3txuHYk6e3671/image.webp?st=2022-08-30T12%3A28%3A32Z&se=2022-08-30T14%3A26%3A32Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/webp&skoid=15f0b47b-a152-4599-9e98-9cb4a58269f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-08-30T12%3A43%3A34Z&ske=2022-09-06T12%3A43%3A34Z&sks=b&skv=2021-08-06&sig=1FK3uGbBdZAdD5HjL1UtLUF5XVhGTIxfaTgBa5ezz2A%3D");
+background-size: cover;
+}
+
+[data-testid="stHeader"] {
+background-color: rgba(0,0,0,0);
+
+[data-testid="stToolbar"] {
+right: 2rem;
+}
+
+[data-testid="column"] {
+background: rgba(255,255,255, 0.9);
+}
+
+[data-testid="column"] img:hover {
+background: rgba(255,255,255, 0.9);
+background-color: white;
+}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 recipez = pd.read_csv('testing_clean_data.csv')
 
 st.title("Lets eat some pasta! 🍝")
@@ -16,7 +44,7 @@ ingredients = st_tags(
     label='# Enter Ingredients:',
     text='Press enter to add more',
     value=[],
-    suggestions=['pecorino', 'tomato', 'cherry', 'pancetta', 'bolognese', 'pork', 'chicken', 'mushroom', 'beef', 'basil', 'ricotta', 'prawn', 'egg', 'olive oil', 'butter'],
+    suggestions=['pecorino', 'tomato', 'cherry', 'pancetta', 'bolognese', 'pork', 'chicken', 'mushroom', 'beef', 'basil', 'ricotta', 'prawn', 'egg', 'olive oil', 'butter', 'chilli', 'tomato paste'],
     maxtags=8,
     key='1')
 
@@ -67,7 +95,26 @@ if ingredients_lower_list:
         col.write(f"[{title}](%s)" % link)
         col.image(img)
         
+column_shit = """
+<style>
 
+[data-testid="column"] {
+background: rgba(255,255,255, 0.9);
+}
+
+[data-testid="column"] img:hover {
+background: rgba(255,255,255, 0.9);
+background-color: white;
+
+[data-testid="stText"] {
+background: rgba(255,255,255, 0.9);
+}
+
+}
+</style>
+"""
+
+st.markdown(column_shit, unsafe_allow_html=True)
 
     # st.markdown("""
     #         <div class="carousel-item">
