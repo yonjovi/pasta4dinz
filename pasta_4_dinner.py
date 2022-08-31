@@ -1,4 +1,5 @@
 from textwrap import wrap
+import base64
 import streamlit as st
 from streamlit_tags import st_tags, st_tags_sidebar
 import pandas as pd
@@ -8,10 +9,17 @@ import pandas as pd
 #         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 #     """, unsafe_allow_html=T rue)
 
+
+
 page_bg_img = """
 <style>
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
 [data-testid="stAppViewContainer"] {
-background-image: url("https://openailabsprodscus.blob.core.windows.net/private/user-gn1vaT0ZAxCQpzP5sUcTnPcg/generations/generation-nwyne1bpVMT3txuHYk6e3671/image.webp?st=2022-08-30T12%3A28%3A32Z&se=2022-08-30T14%3A26%3A32Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/webp&skoid=15f0b47b-a152-4599-9e98-9cb4a58269f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-08-30T12%3A43%3A34Z&ske=2022-09-06T12%3A43%3A34Z&sks=b&skv=2021-08-06&sig=1FK3uGbBdZAdD5HjL1UtLUF5XVhGTIxfaTgBa5ezz2A%3D");
+background-image: url("https://i.ibb.co/BrdYf0z/pastabackz.webp");
 background-size: cover;
 }
 
@@ -23,13 +31,17 @@ right: 2rem;
 }
 
 [data-testid="column"] {
-background: rgba(255,255,255, 0.9);
+background: rgba(255,255,255, 0.5);
+border: 25 25 round;
 }
 
 [data-testid="column"] img:hover {
-background: rgba(255,255,255, 0.9);
+background: rgba(255,255,255, 0.5);
 background-color: white;
+border: 25 25 round;
 }
+
+
 </style>
 """
 
@@ -92,24 +104,26 @@ if ingredients_lower_list:
     cols = [column for row in rows for column in row]
 
     for col, img, title, link in zip(cols, recipe_results_img, recipe_results_title, recipe_results_link):
-        col.write(f"[{title}](%s)" % link)
-        col.image(img)
+        col.caption(f"{title}[🤌🤌🤌](%s)" % link)
+        col.image(img, use_column_width=True)
         
 column_shit = """
 <style>
 
 [data-testid="column"] {
-background: rgba(255,255,255, 0.9);
+background: rgba(255,255,255, 0.5);
 }
 
 [data-testid="column"] img:hover {
-background: rgba(255,255,255, 0.9);
+background: rgba(255,255,255, 0.5);
 background-color: white;
 
 [data-testid="stText"] {
 background: rgba(255,255,255, 0.9);
 }
 
+[data-testid="stCaptionContainer"] p{
+    font-color: black;
 }
 </style>
 """
