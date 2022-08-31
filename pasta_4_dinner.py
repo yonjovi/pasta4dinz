@@ -80,6 +80,7 @@ recipe_results_img = []
 # results_df = pd.DataFrame
 if ingredients_lower_list:
     st.text("And the results...🥁🥁🥁")
+    st.caption("")
     # results_df = pd.DataFrame(columns=['Title', 'Link', 'Ingredients', 'img_links'])
     for i, row in recipez.iterrows():
         if all(ing in row[3].lower() for ing in ingredients_lower_list):
@@ -106,6 +107,7 @@ if ingredients_lower_list:
     for col, img, title, link in zip(cols, recipe_results_img, recipe_results_title, recipe_results_link):
         col.caption(f"{title}[🤌🤌🤌](%s)" % link)
         col.image(img, use_column_width=True)
+        col.caption("")
         
 column_shit = """
 <style>
