@@ -60,7 +60,6 @@ ingredients = st_tags(
     maxtags=8,
     key='1')
 
-# st.write(ingredients)
 
 ingredients_lower_list = []
 
@@ -69,7 +68,6 @@ for ing in ingredients:
     ingredients_lower_list.append(ing)
 
 search_result_dict = {}
-# search_result_dict["Recipe Index"] = {}
 recipe_dict = {}
 
 recipe_results_title = []
@@ -77,29 +75,23 @@ recipe_results_link = []
 recipe_results_ings = []
 recipe_results_img = []
 
-# results_df = pd.DataFrame
 if ingredients_lower_list:
     st.text("And the results...🥁🥁🥁")
     st.caption("")
-    # results_df = pd.DataFrame(columns=['Title', 'Link', 'Ingredients', 'img_links'])
     for i, row in recipez.iterrows():
         if all(ing in row[3].lower() for ing in ingredients_lower_list):
             recipe_title = row[1]
             recipe_link = row[2]
             recipe_ing = row[3]
             recipe_img = row[4]
-            # st.write(f"[{row[1]}](%s)" % row[2])
-            # st.image(row[4])
+
             recipe_results_title.append(recipe_title)
             recipe_results_link.append(recipe_link)
             recipe_results_ings.append(recipe_ing)
             recipe_results_img.append(recipe_img)
     results_df = pd.DataFrame(list(zip(recipe_results_title, recipe_results_link, recipe_results_ings, recipe_results_img)), columns=['Title', 'Link', 'Ingredients', 'Img'])
-    # st.write(recipe_results_img)
-    # for i, row in results_df.iterrows():
-    #     st.write(row[3])
+
     n_cols = 2
-    # st.write(n_cols)
     n_rows = int(1 + len(recipe_results_img) / n_cols)
     rows = [st.columns(n_cols) for _ in range(n_rows)]
     cols = [column for row in rows for column in row]
@@ -131,16 +123,3 @@ background: rgba(255,255,255, 0.9);
 """
 
 st.markdown(column_shit, unsafe_allow_html=True)
-
-    # st.markdown("""
-    #         <div class="carousel-item">
-    #         {% for i,row in results_df.iterrows() %}}
-    #             <img src={{ row[3] }} alt="...">
-    #             <div class="carousel-caption d-none d-md-block">
-    #                 <h5>""</h5>
-    #                 <p><a href="">GO TO RECIPE</a></p>
-    #             </div>
-    #         {% endfor %}
-    #         </div>
-            
-    #     """, unsafe_allow_html=True)
