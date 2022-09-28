@@ -10,6 +10,8 @@ I used the Streamlit library to create the project and scraped the recipes from 
 
 What sets this app apart from the generic streamlit template is the use of st.markdown to customise the styling of the page using CSS and an AI generated image (using Dalle 2). I have also made use of the new streamlit tags component to add filtering functionality to ingredients in the search.
 
+**You can check the app out here**: https://yonjovi-pasta4dinz-pasta-4-dinner-u2daev.streamlitapp.com/
+
 Please follow Vincenzo so he can continue to share amazing recipes, and I can keep my wife happy with amazing food :-) https://www.vincenzosplate.com/
 
 Cheers,
